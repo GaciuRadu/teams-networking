@@ -54,6 +54,15 @@ body > section {
   align-items: center;
   background: linear-gradient(45deg, #0798abfa, transparent);
 }
+
+.tbar {
+  display: flex;
+  padding: 0 0 5px 0;
+}
+.tfill {
+  flex: 1;
+}
+
 #teamsTable {
   border-collapse: collapse;
   width: 100%;
