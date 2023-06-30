@@ -54,6 +54,23 @@ body > section {
   align-items: center;
   background: linear-gradient(45deg, #0798abfa, transparent);
 }
+#teamsTable {
+  border-collapse: collapse;
+  width: 100%;
+}
+#teamsTable th,
+#teamsTable td {
+  border: 1px solid #057988;
+  padding: 5px;
+}
+th {
+  background-color: #0798ab;
+  color: white;
+}
+#teamTable th {
+  border-color: #057988;
+  color: white;
+}
 
 footer {
   background-color: #057988;
