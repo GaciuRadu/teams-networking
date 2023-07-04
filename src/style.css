@@ -82,6 +82,7 @@ th {
 }
 
 footer {
+  padding: 5px;
   background-color: #057988;
   color: white;
   text-align: center;
@@ -95,4 +96,7 @@ footer a:visited {
   padding: 2px 5px;
   border-radius: 0.2em;
   transition: 0.5s;
+}
+a {
+  text-decoration: none;
 }

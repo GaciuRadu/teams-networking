@@ -1,5 +1,9 @@
 # 🗂️ teams-networking
 
+🎞 Live Preview
+
+➡️ Projects & Ideas
+
 📃 Initialize project to use GIT:
 https://nmatei.github.io/web-intro-presentation/js#/git-init
 
@@ -16,5 +20,3 @@ https://nmatei.github.io/web-intro-presentation/js#/webpack-init
 
 📄 webpack.config.js:
 https://nmatei.github.io/web-intro-presentation/js#/webpack-config
-
-🎞 Live Preview
