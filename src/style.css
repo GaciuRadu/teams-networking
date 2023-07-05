@@ -76,6 +76,15 @@ body > section {
   border-collapse: collapse;
   width: 100%;
 }
+
+#teamsTable tfoot input {
+  width: 100%;
+}
+
+teamsTable tfoot input:not([type="image" i]) {
+  box-sizing: border-box;
+}
+
 #teamsTable th,
 #teamsTable td {
   border: 1px solid #057988;
