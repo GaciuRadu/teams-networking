@@ -10,6 +10,15 @@
 
 ### One time usage
 
+in other terminal opne
+
+```sh
+cd c:/products/node-api
+npm start
+```
+
+in current project run:
+
 ```sh
 git close https://github.com/GaciuRadu/teams-networking.git
 cd teams-networching
