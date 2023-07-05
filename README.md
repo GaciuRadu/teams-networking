@@ -4,7 +4,7 @@
 
 ➡️ Projects & Ideas
 
-# Open/close the link: npm start/ CTRL+C
+# 🖥️ Open/close the link: npm start/ CTRL+C
 
 # 📋 Steps to create this project
 
@@ -22,3 +22,9 @@ https://nmatei.github.io/web-intro-presentation/js#/webpack-init
 
 📄 webpack.config.js:
 https://nmatei.github.io/web-intro-presentation/js#/webpack-config
+
+📄 Folder Structure
+https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure
+
+📄 src/index.html- vezi film 30jun2023- la minutul- 1.22.50
+https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html

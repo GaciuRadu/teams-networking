@@ -48,7 +48,7 @@ body > section {
   font-weight: 100;
   font-size: 1.2em;
 }
-#header-wraper {
+#header-wrapper {
   display: flex;
   flex-direction: row;
   align-items: center;

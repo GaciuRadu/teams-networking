@@ -7,7 +7,7 @@
   </head>
   <body>
     <header>
-      <div id="header-wraper">
+      <div id="header-wrapper">
         <div id="my-picture">
           <img src="network-team-icon.png" width="100" alt="" />
         </div>
@@ -34,15 +34,21 @@
       <table id="teamsTable">
         <thead>
           <tr>
+            <th>
+              <input type="checkbox" />
+            </th>
             <th>Promotion</th>
             <th>Members</th>
             <th>Project Name</th>
             <th>Project URL</th>
-            <th>x</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
           <tr>
+            <td style="text-align: center">
+              <input type="checkbox" />
+            </td>
             <td>Fast Truck IT</td>
             <td>Radu Gaciu</td>
             <td>Teams Network</td>
@@ -71,6 +77,23 @@
             <td>x</td>
           </tr>
         </tbody>
+        <tfoot>
+          <td></td>
+          <td>
+            <input type="text" required name="promotion" placeholder="Enter promotion" />
+          </td>
+
+          <td>
+            <input type="text" required name="name" placeholder="Enter project name" />
+          </td>
+          <td>
+            <input type="text" required name="url" placeholder="Project URL" />
+          </td>
+          <td>
+            <button>💾</button>
+            <button>x</button>
+          </td>
+        </tfoot>
       </table>
     </section>
 
