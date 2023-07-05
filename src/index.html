@@ -31,43 +31,45 @@
         </div>
       </div>
 
-      <table id="teamsTable">
-        <thead>
-          <tr>
-            <th>
-              <input type="checkbox" />
-            </th>
-            <th>Promotion</th>
-            <th>Members</th>
-            <th>Project Name</th>
-            <th>Project URL</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-        <tfoot>
-          <tr>
-            <td></td>
-            <td>
-              <input type="text" required name="Enter Promotion" placeholder="Enter promotion" />
-            </td>
-            <td>
-              <input type="text" required name="Enter Members" placeholder="Enter members" />
-            </td>
+      <form action="secretara" method="get">
+        <table id="teamsTable">
+          <thead>
+            <tr>
+              <th>
+                <input type="checkbox" />
+              </th>
+              <th>Promotion</th>
+              <th>Members</th>
+              <th>Project Name</th>
+              <th>Project URL</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td>
+                <input type="text" required name="Enter Promotion" placeholder="Enter promotion" />
+              </td>
+              <td>
+                <input type="text" required name="Enter Members" placeholder="Enter members" />
+              </td>
 
-            <td>
-              <input type="text" required name="Enter Name" placeholder="Enter project name" />
-            </td>
-            <td>
-              <input type="text" required name="Enter URL" placeholder="Project URL" />
-            </td>
-            <td>
-              <button>💾</button>
-              <button>x</button>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
+              <td>
+                <input type="text" required name="Enter Name" placeholder="Enter project name" />
+              </td>
+              <td>
+                <input type="text" required name="Enter URL" placeholder="Project URL" />
+              </td>
+              <td>
+                <button type="submit">💾</button>
+                <button type="reset">x</button>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </form>
     </section>
 
     <footer>

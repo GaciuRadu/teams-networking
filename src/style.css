@@ -81,7 +81,7 @@ body > section {
   width: 100%;
 }
 
-teamsTable tfoot input:not([type="image" i]) {
+#teamsTable tfoot input:not([type="image" i]) {
   box-sizing: border-box;
 }
 
