@@ -18,7 +18,12 @@ body {
   display: flex;
   flex-direction: column;
   margin: 0;
+  background-color: #e9f6f8;
 }
+tbody tr:nth-of-type(odd) {
+  background: white;
+}
+
 #my-picture {
   padding: 5px;
   width: 108px;
