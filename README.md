@@ -11,6 +11,10 @@
 ### one time usage
 
 ```sh
+git close https://github.com/GaciuRadu/teams-networking.git
+cd teams-networching
+npm instal
+```
 
 📃 Initialize project to use GIT:
 https://nmatei.github.io/web-intro-presentation/js#/git-init
@@ -32,5 +36,3 @@ https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure
 
 📄 src/index.html- vezi film 30jun2023- la minutul- 1.22.50
 https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html
-
-```
