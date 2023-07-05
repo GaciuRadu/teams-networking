@@ -1,13 +1,16 @@
 html {
   height: 100%;
 }
+
 h1 {
   color: white;
   margin: 5px 0;
 }
+
 h2 {
   margin: 2px;
 }
+
 header {
   flex-direction: row;
   align-items: center;
@@ -62,7 +65,8 @@ body > section {
 
 .tbar {
   display: flex;
-  padding: 0 0 5px 0;
+  align-items: stretch;
+  padding: 0 0 10px 0;
 }
 .tfill {
   flex: 1;

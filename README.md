@@ -8,7 +8,7 @@
 
 ## 📋 Steps to create this project
 
-### one time usage
+### One time usage
 
 ```sh
 git close https://github.com/GaciuRadu/teams-networking.git
