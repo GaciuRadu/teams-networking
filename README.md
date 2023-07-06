@@ -4,11 +4,25 @@
 
 🖥️ Open/close the link: npm start/ CTRL+C
 
-## 📋 Steps to create this project
+# 📋 Steps to create this project
 
-### One time usage
+## Install (one time usage)
 
-in other terminal opne
+```sh
+git clone https://github.com/GaciuRadu/teams-networking.git
+cd teams- networking
+npm install
+```
+
+## Start(daily usage- open and close terminal)
+
+```sh
+npm start
+and
+CTRL+C
+```
+
+in other terminal open
 
 ```sh
 cd c:/products/node-api
