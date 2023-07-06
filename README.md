@@ -23,16 +23,16 @@ cd teams-networching
 npm instal
 ```
 
-✅ create New repository in github/new
-✅ check Add a README file
-✅ Add .gitignore (Node template)
-✅ Clone it on your pc
-✅ Create index.html file with standards
-✅ Create table that represents final desing and structure (2 persons as example)
-✅ Table headers -> [firstName, lastName, links {github, linkedin} ]
-✅ Remove 2 example persons and load them from js
-✅ hint - TABLE -> THEAD & TBODY & TFOOT tags
-✅ load team.json and render them in page
+- [x] Create New repository in github/new
+- [x] check Add a README file
+- [x] Add .gitignore (Node template)
+- [x] Clone it on your pc
+- [x] Create index.html file with standards
+- [x] Create table that represents final desing and structure (2 persons as example)
+- [x] Table headers -> [firstName, lastName, links {github, linkedin} ]
+- [x] Remove 2 example persons and load them from js
+- [x] hint - TABLE -> THEAD & TBODY & TFOOT tags
+- [x] load team.json and render them in page
 
 📃 Initialize project to use GIT:
 https://nmatei.github.io/web-intro-presentation/js#/git-init
