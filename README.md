@@ -1,6 +1,6 @@
 # 🗂️ teams-networking
 
-## Teams-member
+## ✌️ Teams-member
 
 - [Radu Gaciu](https://github.com/GaciuRadu/teams-networking)
 
