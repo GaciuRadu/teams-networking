@@ -12,15 +12,15 @@
 
 # 📋 Steps to create this project
 
-## Install (one time usage)
+## ⚙️ Install (one time usage)
 
 ```sh
 git clone https://github.com/GaciuRadu/teams-networking.git
-cd teams- networking
+cd node-api
 npm install
 ```
 
-## Start(daily usage- open and close terminal)
+## ▶️ Start(daily usage- open and close terminal)
 
 ```sh
 npm start
@@ -39,9 +39,11 @@ in current project run:
 
 ```sh
 git close https://github.com/GaciuRadu/teams-networking.git
-cd teams-networching
-npm instal
+cd teams-networking
+npm install
 ```
+
+Open [http://localhost:3000] to see if it works
 
 - [x] Create New repository in github/new
   - [x] check Add a README file
