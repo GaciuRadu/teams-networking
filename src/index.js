@@ -1,5 +1,7 @@
 import "./style.css";
 
+let allTeams = [];
+
 function $(selector) {
   return document.querySelector(selector);
 }
@@ -51,7 +53,10 @@ function renderTeams(teams) {
 function loadTeams() {
   fetch("http://localhost:3000/teams-json")
     .then(r => r.json())
-    .then(renderTeams);
+    .then(teams => {
+      allTeams = teams;
+      renderTeams(teams);
+    });
 }
 
 function onSubmit(e) {
@@ -76,13 +81,18 @@ function onSubmit(e) {
     }
   });
 }
+function startEdit(id) {
+  console.warn("edit... %", id, allTeams);
+  const team = allTeams.find(team => team.id === id);
+  console.warn(team);
+}
 
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
 }
 // console.info("delete?", document.querySelectorAll("delete-btn"));
 $("#teamsTable tbody").addEventListener(`click`, e => {
-  // console.warn("click", e.target.matches(`a.delete-btn`));
+  console.warn("click", e.target.matches(`a.delete-btn`));
   if (e.target.matches(`a.delete-btn`)) {
     const id = e.target.dataset.id;
     console.warn("delete...%", id);
@@ -92,9 +102,12 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
         window.location.reload();
       }
     });
+  } else if (e.target.matches("a.edit-btn")) {
+    const id = e.target.dataset.id;
+    startEdit(id);
   }
-  console.info("delete status %o", status);
-  window.location.reload();
+  // console.info("delete status %o", status);
+  // window.location.reload();
 });
 
 loadTeams();
