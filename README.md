@@ -61,7 +61,7 @@ Steps
 - [x] Clone & Start node-api
 - [x] From current UI make request to node-api (using json or mysql url)
 
-curs 05 jul minutul 57.00
+PS: Additional Information
 
 📃 Initialize project to use GIT: - [here](https://nmatei.github.io/web-intro-presentation/js#/git-init)
 
