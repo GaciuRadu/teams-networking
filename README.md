@@ -1,6 +1,6 @@
 # 🗂️ teams-networking
 
-🎞 Live Preview ➡️ https://gaciuradu.github.io/teams-networking/
+🎞 Live Preview ➡️ [link teams-networking] (https://gaciuradu.github.io/teams-networking/)
 
 🖥️ Open/close the link: npm start/ CTRL+C
 
