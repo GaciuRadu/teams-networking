@@ -63,23 +63,16 @@ Steps
 
 curs 05 jul minutul 57.00
 
-📃 Initialize project to use GIT:
-https://nmatei.github.io/web-intro-presentation/js#/git-init
+📃 Initialize project to use GIT: - [here](https://nmatei.github.io/web-intro-presentation/js#/git-init)
 
-📄 Initialize project to use Webpack:
-https://nmatei.github.io/web-intro-presentation/js#/webpack-init
+📄 Initialize project to use Webpack: - [here](https://nmatei.github.io/web-intro-presentation/js#/webpack-init)
 
-📄 Initialize project to use NPM:
-https://nmatei.github.io/web-intro-presentation/js#/npm-init
+📄 Initialize project to use NPM: - [here](https://nmatei.github.io/web-intro-presentation/js#/npm-init0)
 
-📄 Initialize project to use Webpack:
-https://nmatei.github.io/web-intro-presentation/js#/webpack-init
+📄 Initialize project to use Webpack: - [here](https://nmatei.github.io/web-intro-presentation/js#/webpack-init)
 
-📄 webpack.config.js:
-https://nmatei.github.io/web-intro-presentation/js#/webpack-config
+📄 webpack.config.js: - [here](https://nmatei.github.io/web-intro-presentation/js#/webpack-config)
 
-📄 Folder Structure
-https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure
+📄 Folder Structure: - [here](https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure)
 
-📄 src/index.html- vezi film 30jun2023- la minutul- 1.22.50
-https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html
+📄 src/index.html- see movie 30jun2023- la minutul- 1.22.50: - [here] (https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html)
