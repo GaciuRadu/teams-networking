@@ -75,4 +75,4 @@ PS: Additional Information
 
 📄 Folder Structure: - [here](https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure)
 
-📄 src/index.html- see movie 30jun2023- la minutul- 1.22.50: - [here] (https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html)
+📄 src/index.html- see movie 30jun2023- la minutul- 1.22.50: - [here](https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html)
