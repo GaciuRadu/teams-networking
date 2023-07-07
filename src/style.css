@@ -77,11 +77,8 @@ body > section {
   width: 100%;
 }
 
-#teamsTable tfoot input {
+#teamsTable input[type="text"] {
   width: 100%;
-}
-
-#teamsTable tfoot input:not([type="image" i]) {
   box-sizing: border-box;
 }
 

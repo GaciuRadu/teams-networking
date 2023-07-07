@@ -1,6 +1,7 @@
 import "./style.css";
 
 let allTeams = [];
+let editId = [];
 
 function $(selector) {
   return document.querySelector(selector);
@@ -26,6 +27,16 @@ function deleteTeamRequest(id) {
   }).then(r => r.json());
 }
 
+function updateTeamRequest(team) {
+  return fetch("http://localhost:3000/teams-json/update", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(team)
+  }).then(r => r.json());
+}
+
 // console.warn("start app");
 
 function getTeamAsHTML(team) {
@@ -37,16 +48,41 @@ function getTeamAsHTML(team) {
     <td>${team.name}</td>
     <td>${team.url}</td>    
     <td> 
-      <a data-id= "${team.id}" class="delete-btn">✖</a>
-      <a data-id= "${team.id}" class="edit-btn">✎</a> 
-    </td>
-    </tr>`;
+      <a data-id="${team.id}" class="edit-btn">✎</a> 
+      <a data-id="${team.id}" class="delete-btn">✖</a>
+          </td>
+  </tr>`;
 }
 
-function renderTeams(teams) {
-  //   console.warn("render", teams);
-  const htmlTeams = teams.map(getTeamAsHTML);
-  //   console.warn(htmlTeams);
+function getTeamAsHTMLInputs(team) {
+  // console.info(team);
+  return `<tr>
+    <td></td>
+    <td>
+      <input value=${team.promotion} type="text" required name="promotion" placeholder="Enter promotion" />
+    </td>
+    <td>
+      <input value=${team.members} type="text" required name="members" placeholder="Enter members" />
+    </td>
+    <td>
+      <input value=${team.name} type="text" required name="name" placeholder="Enter project name" />
+    </td>
+    <td>
+      <input value=${team.url} type="text" required name="url" placeholder="Project URL" />
+    </td>
+    <td>
+      <button type="submit" title="Save">💾</button>
+      <button type="reset" title="Cancel">x</button>
+    </td>
+  </tr>`;
+}
+
+function renderTeams(teams, editId) {
+  console.warn("render", teams);
+  const htmlTeams = teams.map(team => {
+    return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
+  });
+  // console.warn(htmlTeams);
   $("#teamsTable tbody").innerHTML = htmlTeams.join("");
 }
 
@@ -59,32 +95,62 @@ function loadTeams() {
     });
 }
 
-function onSubmit(e) {
-  //   console.warn("submit", e);
-  e.preventDefault();
-
-  const members = $("#members").value;
-  const name = $("input[name=name]").value;
-  const url = $("input[name=url]").value;
+function getTeamValues(parent) {
+  const promotion = $(`${parent} input[name=promotion]`).value;
+  const members = $(`${parent} input[name=members]`).value;
+  const name = $(`${parent} input[name=name]`).value;
+  const url = $(`${parent} input[name=url]`).value;
   const team = {
-    promotion: $("#promotion").value,
+    promotion: promotion,
     members: members,
     name,
     url
   };
+  return team;
+}
+
+function onSubmit(e) {
+  //   console.warn("submit", e);
+  e.preventDefault();
+
+  console.warn(`update or crate?`, editId);
+
+  const team = getTeamValues(editId ? "tbody" : "tfoot");
+
   console.warn(team);
 
-  createTeamRequest(team).then(status => {
-    console.warn("created", status);
-    if (status.success) {
-      window.location.reload();
-    }
-  });
+  if (editId) {
+    team.id = editId;
+    console.warn("update...", team);
+
+    updateTeamRequest(team).then(status => {
+      console.warn("updated", status);
+      if (status.success) {
+        window.location.reload();
+      }
+    });
+  } else {
+    createTeamRequest(team).then(status => {
+      // console.warn("created", status);
+      if (status.success) {
+        window.location.reload();
+      }
+    });
+  }
 }
 function startEdit(id) {
-  console.warn("edit... %", id, allTeams);
-  const team = allTeams.find(team => team.id === id);
-  console.warn(team);
+  editId = id;
+  console.warn("edit... %o", id, allTeams);
+  // const team = allTeams.find(team => team.id === id);
+
+  // console.warn(team.promotion);
+  // $("#promotion").value = team.promotion;
+  // $("#members").value = team.members;
+  renderTeams(allTeams, id);
+
+  document.querySelectorAll("tfoot input").forEach(input => {
+    input.disabled = true;
+  });
 }
 
 function initEvents() {
@@ -95,7 +161,7 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
   console.warn("click", e.target.matches(`a.delete-btn`));
   if (e.target.matches(`a.delete-btn`)) {
     const id = e.target.dataset.id;
-    console.warn("delete...%", id);
+    // console.warn("delete...%", id);
     deleteTeamRequest(id).then(status => {
       // console.info("deete status %o", status);
       if (status.success) {
