@@ -38,15 +38,24 @@ npm instal
 ```
 
 - [x] Create New repository in github/new
-- [x] check Add a README file
-- [x] Add .gitignore (Node template)
+  - [x] check Add a README file
+  - [x] Add .gitignore (Node template)
 - [x] Clone it on your pc
 - [x] Create index.html file with standards
 - [x] Create table that represents final desing and structure (2 persons as example)
-- [x] Table headers -> [firstName, lastName, links {github, linkedin} ]
-- [x] Remove 2 example persons and load them from js
-- [x] hint - TABLE -> THEAD & TBODY & TFOOT tags
+  - [x] Table headers -> [firstName, lastName, links {github, linkedin} ]
+  - [x] Remove 2 example persons and load them from js
+  - [x] hint - TABLE -> THEAD & TBODY & TFOOT tags
 - [x] load team.json and render them in page
+
+# 🧩 Connect with API
+
+Steps
+
+- [x] Clone & Start node-api
+- [x] From current UI make request to node-api (using json or mysql url)
+
+curs 05 jul minutul 57.00
 
 📃 Initialize project to use GIT:
 https://nmatei.github.io/web-intro-presentation/js#/git-init
@@ -68,10 +77,3 @@ https://nmatei.github.io/web-intro-presentation/js#/webpack-folder-structure
 
 📄 src/index.html- vezi film 30jun2023- la minutul- 1.22.50
 https://nmatei.github.io/web-intro-presentation/js#/remove-script-from-html
-
-🧩 Connect with API
-
-Steps
-
-✅ Clone & Start node-api
-✅ From current UI make request to node-api (using json or mysql url)
