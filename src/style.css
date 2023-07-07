@@ -118,3 +118,18 @@ footer a:visited {
 a {
   text-decoration: none;
 }
+
+.edit-btn,
+.delete-btn {
+  color: blue;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  text-decoration: underline;
+  color: red;
+}
+.edit-btn:hover {
+  text-decoration: underline;
+  color: #039903;
+}
