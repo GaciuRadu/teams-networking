@@ -24,7 +24,7 @@ function getTeamAsHTML(team) {
     <td>${team.members}</td>
     <td>${team.name}</td>
     <td>${team.url}</td>    
-    <td>x 🖍️</td>
+    <td> ✖ ✎</td>
     </tr>`;
 }
 
