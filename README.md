@@ -22,13 +22,15 @@ npm install
 
 ## ▶️ Start(daily usage- open and close terminal)
 
+- in VS Code terminal
+
 ```sh
 npm start
 and
 CTRL+C
 ```
 
-in other terminal open
+- in other terminal open
 
 ```sh
 cd c:/products/node-api
@@ -43,7 +45,7 @@ cd teams-networking
 npm install
 ```
 
-Open http://localhost:3000/ to see if it works
+Open http://localhost:3000/ to see if it works.
 
 - [x] Create New repository in github/new
   - [x] check Add a README file
