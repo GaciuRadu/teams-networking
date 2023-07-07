@@ -43,7 +43,7 @@ cd teams-networking
 npm install
 ```
 
-Open [http://localhost:3000] to see if it works
+Open http://localhost:3000/ to see if it works
 
 - [x] Create New repository in github/new
   - [x] check Add a README file
