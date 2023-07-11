@@ -78,7 +78,7 @@ function getTeamAsHTMLInputs(team) {
 }
 
 function renderTeams(teams, editId) {
-  console.warn("render", teams);
+  // console.warn("render", teams);
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
   });
@@ -110,7 +110,7 @@ function getTeamValues(parent) {
 }
 
 function onSubmit(e) {
-  //   console.warn("submit", e);
+  console.warn("submit", e);
   e.preventDefault();
 
   console.warn(`update or crate?`, editId);
@@ -156,14 +156,14 @@ function startEdit(id) {
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
 }
-// console.info("delete?", document.querySelectorAll("delete-btn"));
+// console.info("delete?", document.querySelectorAll(".delete-btn"));
 $("#teamsTable tbody").addEventListener(`click`, e => {
-  console.warn("click", e.target.matches(`a.delete-btn`));
+  // console.warn("click", e.target.matches(`a.delete-btn`));
   if (e.target.matches(`a.delete-btn`)) {
     const id = e.target.dataset.id;
     // console.warn("delete...%", id);
     deleteTeamRequest(id).then(status => {
-      // console.info("deete status %o", status);
+      // console.info("delete status %o", status);
       if (status.success) {
         window.location.reload();
       }

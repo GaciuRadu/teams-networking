@@ -9,6 +9,7 @@
 - [link teams-networking](https://gaciuradu.github.io/teams-networking/)
 
 🖥️ Open/close the link: npm start/ CTRL+C
+npm run data- git checkout HEAD data.teams,json
 
 # 📋 Steps to create this project
 
