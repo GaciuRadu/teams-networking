@@ -75,6 +75,7 @@ body > section {
 #teamsTable {
   border-collapse: collapse;
   width: 100%;
+  table-layout: fixed;
 }
 
 #teamsTable input[type="text"] {
@@ -86,6 +87,11 @@ body > section {
 #teamsTable td {
   border: 1px solid #057988;
   padding: 5px;
+  line-height: 23 px;
+  /* word-break: break-all; */
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 th {
   background-color: #0798ab;
@@ -94,6 +100,9 @@ th {
 #teamTable th {
   border-color: #057988;
   color: white;
+}
+.table-actions {
+  width: 80px;
 }
 
 footer {
@@ -120,6 +129,13 @@ a {
 .delete-btn {
   color: #02638d;
   cursor: pointer;
+  display: none;
+}
+#teamsTable tr:hover .edit-btn {
+  display: inline-block;
+}
+#teamsTable tr:hover .delete-btn {
+  display: inline-block;
 }
 
 .delete-btn:hover {
