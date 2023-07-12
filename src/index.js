@@ -139,7 +139,6 @@ function onSubmit(e) {
         // window.location.reload();
         loadTeams();
         // $("#teamsForm").reset();
-
         setInputsDisable(false);
         editId = "";
       }
@@ -195,7 +194,7 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
     deleteTeamRequest(id).then(status => {
       // console.info("delete status %o", status);
       if (status.success) {
-        window.location.reload();
+        loadTeams();
       }
     });
   } else if (e.target.matches("a.edit-btn")) {
