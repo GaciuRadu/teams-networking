@@ -1,7 +1,7 @@
 import "./style.css";
 
 let allTeams = [];
-let editId = [];
+let editId;
 
 function $(selector) {
   return document.querySelector(selector);
@@ -110,10 +110,10 @@ function getTeamValues(parent) {
 }
 
 function onSubmit(e) {
-  console.warn("submit", e);
+  // console.warn("submit", e);
   e.preventDefault();
 
-  console.warn(`update or crate?`, editId);
+  // console.warn(`update or crate?`, editId);
 
   const team = getTeamValues(editId ? "tbody" : "tfoot");
 
@@ -140,7 +140,7 @@ function onSubmit(e) {
 }
 function startEdit(id) {
   editId = id;
-  console.warn("edit... %o", id, allTeams);
+  // console.warn("edit... %o", id, allTeams);
   // const team = allTeams.find(team => team.id === id);
 
   // console.warn(team.promotion);
