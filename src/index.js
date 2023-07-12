@@ -48,8 +48,8 @@ function getTeamAsHTML(team) {
     <td>${team.name}</td>
     <td>${team.url}</td>    
     <td> 
-      <a data-id="${team.id}" class="edit-btn">✎</a> 
-      <a data-id="${team.id}" class="delete-btn">✖</a>
+      <a data-id="${team.id}" class="edit-btn" title="edit">✎</a> 
+      <a data-id="${team.id}" class="delete-btn title="delete">✖</a>
           </td>
   </tr>`;
 }
@@ -78,7 +78,7 @@ function getTeamAsHTMLInputs(team) {
 }
 
 function renderTeams(teams, editId) {
-  // console.warn("render", teams);
+  console.warn("render", teams);
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
   });
@@ -112,26 +112,23 @@ function getTeamValues(parent) {
 function onSubmit(e) {
   // console.warn("submit", e);
   e.preventDefault();
-
   // console.warn(`update or crate?`, editId);
-
   const team = getTeamValues(editId ? "tbody" : "tfoot");
 
-  console.warn(team);
+  // console .warn(team);
 
   if (editId) {
     team.id = editId;
-    console.warn("update...", team);
-
+    // console.warn("update...", team);
     updateTeamRequest(team).then(status => {
-      console.warn("updated", status);
+      // console.warn("updated", status);
       if (status.success) {
         window.location.reload();
       }
     });
   } else {
     createTeamRequest(team).then(status => {
-      // console.warn("created", status);
+      console.warn("created", status);
       if (status.success) {
         window.location.reload();
       }
