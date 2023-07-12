@@ -139,10 +139,8 @@ a {
 }
 
 .delete-btn:hover {
-  text-decoration: underline;
   color: #b90303;
 }
 .edit-btn:hover {
-  text-decoration: underline;
   color: #039903;
 }
