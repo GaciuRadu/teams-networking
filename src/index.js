@@ -40,16 +40,20 @@ function updateTeamRequest(team) {
 // console.warn("start app");
 
 function getTeamAsHTML(team) {
+  const displayUrl = team.url.startsWith("https://github.com/") ? team.url.substring(19) : team.url;
+
   // console.info(team);
   return `<tr>
     <td></td>
     <td>${team.promotion}</td>
     <td>${team.members}</td>
     <td>${team.name}</td>
-    <td>${team.url}</td>    
+    <td>
+      <a target="_blank" href="${team.url}"> ${displayUrl}</a>
+    </td>    
     <td> 
       <a data-id="${team.id}" class="edit-btn" title="edit">✎</a> 
-      <a data-id="${team.id}" class="delete-btn" title="delete">✖</a>
+      <a data-id="${team.id}" class="delete-btn" title="delete">🗑️</a>
           </td>
   </tr>`;
 }
