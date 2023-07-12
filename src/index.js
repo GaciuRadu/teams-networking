@@ -49,7 +49,7 @@ function getTeamAsHTML(team) {
     <td>${team.url}</td>    
     <td> 
       <a data-id="${team.id}" class="edit-btn" title="edit">✎</a> 
-      <a data-id="${team.id}" class="delete-btn title="delete">✖</a>
+      <a data-id="${team.id}" class="delete-btn" title="delete">✖</a>
           </td>
   </tr>`;
 }
