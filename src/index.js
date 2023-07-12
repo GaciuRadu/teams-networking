@@ -84,6 +84,15 @@ function renderTeams(teams, editId) {
   });
   // console.warn(htmlTeams);
   $("#teamsTable tbody").innerHTML = htmlTeams.join("");
+  addTitlesToOverflowCells();
+}
+
+function addTitlesToOverflowCells() {
+  const cells = document.querySelectorAll(`#teamsTable td`);
+  console.warn("cells", cells);
+  cells.forEach(cell => {
+    cell.title = cell.offsetWidth < cell.scrolWidth ? cell.textContent : "";
+  });
 }
 
 function loadTeams() {
