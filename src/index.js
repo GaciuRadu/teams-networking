@@ -78,7 +78,7 @@ function getTeamAsHTMLInputs(team) {
 }
 
 function renderTeams(teams, editId) {
-  console.warn("render", teams);
+  // console.warn("render", teams);
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
   });
@@ -89,7 +89,7 @@ function renderTeams(teams, editId) {
 
 function addTitlesToOverflowCells() {
   const cells = document.querySelectorAll(`#teamsTable td`);
-  console.warn("cells", cells);
+  // console.warn("cells", cells);
   cells.forEach(cell => {
     cell.title = cell.offsetWidth < cell.scrolWidth ? cell.textContent : "";
   });
@@ -154,13 +154,26 @@ function startEdit(id) {
   // $("#members").value = team.members;
   renderTeams(allTeams, id);
 
+  setInputsDisable(true);
+}
+
+function setInputsDisable(disable) {
   document.querySelectorAll("tfoot input").forEach(input => {
-    input.disabled = true;
+    input.disabled = disable;
   });
 }
 
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
+  $("#teamsForm").addEventListener("reset", e => {
+    console.info("reset", editId);
+    if (editId) {
+      console.warn("cancel- flow de cancel edit");
+      renderTeams(allTeams);
+      setInputsDisable(false);
+      editId = "";
+    }
+  });
 }
 // console.info("delete?", document.querySelectorAll(".delete-btn"));
 $("#teamsTable tbody").addEventListener(`click`, e => {
