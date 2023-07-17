@@ -59,7 +59,7 @@ Open http://localhost:3000/ to see if it works.
   - [x] hint - TABLE -> THEAD & TBODY & TFOOT tags
 - [x] load team.json and render them in page
 
-# 🧩 Connect with API
+# 🧩 🔎 Connect with API
 
 Steps
 
