@@ -29,6 +29,7 @@ npm install
 npm start
 and
 CTRL+C
+npm run build
 ```
 
 - in other terminal open
