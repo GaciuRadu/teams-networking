@@ -76,7 +76,7 @@ function getTeamAsHTMLInputs(team) {
     </td>
     <td>
       <button type="submit" title="Save">💾</button>
-      <button type="reset" title="Cancel">x</button>
+      <button type="reset" title="Cancel">✖</button>
     </td>
   </tr>`;
 }
