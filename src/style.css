@@ -101,9 +101,6 @@ th {
   border-color: #057988;
   color: white;
 }
-.table-actions {
-  width: 80px;
-}
 
 footer {
   padding: 5px;
@@ -121,8 +118,19 @@ footer a:visited {
   border-radius: 0.2em;
   transition: 0.5s;
 }
+
 a {
   text-decoration: none;
+}
+
+.table-actions {
+  width: 80px;
+}
+.action-btn {
+  cursor: pointer;
+  min-width: 34px;
+  height: 28px;
+  text-align: center;
 }
 
 .edit-btn,
@@ -137,7 +145,6 @@ a {
 #teamsTable tr:hover .delete-btn {
   display: inline-block;
 }
-
 .delete-btn:hover {
   color: #b90303;
 }
