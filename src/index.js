@@ -41,7 +41,7 @@ function updateTeamRequest(team) {
 
 function getTeamAsHTML(team) {
   const displayUrl = team.url.startsWith("https://github.com/") ? team.url.substring(19) : team.url;
-
+  // const displayOtherUrl = team.url.startsWith("https://www.") ? team.url.substring(12) : team.url;
   // console.info(team);
   return `<tr>
     <td></td>
@@ -49,11 +49,11 @@ function getTeamAsHTML(team) {
     <td>${team.members}</td>
     <td>${team.name}</td>
     <td>
-      <a target="_blank" href="${team.url}"> ${displayUrl}</a>
+      <a href="${team.url}" target="_blank"> ${displayUrl} </a>
     </td>    
     <td> 
-      <a data-id="${team.id}" class="action-btn edit-btn" title="edit">✎</a> 
-      <a data-id="${team.id}" class="action-btn delete-btn" title="delete">🗑️</a>
+      <button data-id="${team.id}" type="button" class="action-btn edit-btn" title="edit">✎</button> 
+      <button data-id="${team.id}" type="button" class="action-btn delete-btn" title="delete">🗑️</button>
           </td>
   </tr>`;
 }
@@ -163,7 +163,6 @@ function startEdit(id) {
   // $("#promotion").value = team.promotion;
   // $("#members").value = team.members;
   renderTeams(allTeams, id);
-
   setInputsDisable(true);
 }
 
@@ -176,9 +175,9 @@ function setInputsDisable(disable) {
 function initEvents() {
   $("#teamsForm").addEventListener("submit", onSubmit);
   $("#teamsForm").addEventListener("reset", e => {
-    console.info("reset", editId);
+    // console.info("reset", editId);
     if (editId) {
-      console.warn("cancel- flow de cancel edit");
+      // console.warn("cancel- flow de cancel edit");
       renderTeams(allTeams);
       setInputsDisable(false);
       editId = "";
@@ -188,7 +187,7 @@ function initEvents() {
 // console.info("delete?", document.querySelectorAll(".delete-btn"));
 $("#teamsTable tbody").addEventListener(`click`, e => {
   // console.warn("click", e.target.matches(`a.delete-btn`));
-  if (e.target.matches(`a.delete-btn`)) {
+  if (e.target.matches(`button.delete-btn`)) {
     const id = e.target.dataset.id;
     // console.warn("delete...%", id);
     deleteTeamRequest(id).then(status => {
@@ -197,7 +196,7 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
         loadTeams();
       }
     });
-  } else if (e.target.matches("a.edit-btn")) {
+  } else if (e.target.matches("button.edit-btn")) {
     const id = e.target.dataset.id;
     startEdit(id);
   }
