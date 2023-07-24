@@ -42,6 +42,9 @@ function updateTeamRequest(team) {
 function getTeamAsHTML(team) {
   const url = team.url;
   const displayUrl = url.startsWith("https://github.com/") ? url.substring(19) : url;
+
+  // const displayUrl = url ? (url.includes("//github.com/") ? url.replace("https://github.com/", "") : "google.com") : "";
+
   // const displayOtherUrl = url.startsWith("https://www.") ? url.substring(12) : url;
   // console.info(team);
   return `<tr>
