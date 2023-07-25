@@ -177,9 +177,10 @@ function setInputsDisable(disable) {
 }
 
 function filterElements(teams, search) {
+  search = search.toLowerCase();
   return teams.filter(team => {
     // console.info("search %O in %o", search, team.promotion);
-    return team.promotion.includes(search);
+    return team.promotion.toLowerCase().includes(search);
   });
 }
 
