@@ -180,7 +180,12 @@ function filterElements(teams, search) {
   search = search.toLowerCase();
   return teams.filter(team => {
     // console.info("search %O in %o", search, team.promotion);
-    return team.promotion.toLowerCase().includes(search);
+    return (
+      team.promotion.toLowerCase().includes(search) ||
+      team.members.toLowerCase().includes(search) ||
+      team.name.toLowerCase().includes(search) ||
+      team.url.toLowerCase().includes(search)
+    );
   });
 }
 
@@ -188,7 +193,7 @@ function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
     const teams = filterElements(allTeams, search);
-    // console.info("search", search, teams);
+    console.info("search", search, teams);
     renderTeams(teams);
   });
 
