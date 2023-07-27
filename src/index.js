@@ -93,7 +93,15 @@ function getTeamAsHTMLInputs(team) {
   </tr>`;
 }
 
+let previewTeams = [];
+
 function renderTeams(teams, editId) {
+  if (teams === previewTeams) {
+    console.warn("same teams already rendered");
+    return;
+  }
+  console.time("render");
+  previewTeams = teams;
   // console.warn("render", teams);
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
@@ -101,6 +109,7 @@ function renderTeams(teams, editId) {
   // console.warn(htmlTeams);
   $("#teamsTable tbody").innerHTML = htmlTeams.join("");
   addTitlesToOverflowCells();
+  console.timeEnd("render");
 }
 
 function addTitlesToOverflowCells() {
@@ -160,7 +169,8 @@ function onSubmit(e) {
       console.warn("created", status);
       if (status.success) {
         team.id = status.id;
-        allTeams.push(team);
+        // allTeams.push(team);
+        allTeams = [...allTeams, team];
         renderTeams(allTeams);
         console.info(allTeams);
         $("#teamsForm").reset();
