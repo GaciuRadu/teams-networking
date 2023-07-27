@@ -96,7 +96,7 @@ function getTeamAsHTMLInputs(team) {
 let previewTeams = [];
 
 function renderTeams(teams, editId) {
-  if (teams === previewTeams) {
+  if (!editId && teams === previewTeams) {
     console.warn("same teams already rendered");
     return;
   }
@@ -180,7 +180,7 @@ function onSubmit(e) {
 }
 function startEdit(id) {
   editId = id;
-  // console.warn("edit... %o", id, allTeams);
+  console.warn("edit... %o", id, allTeams);
   // const team = allTeams.find(team => team.id === id);
 
   // console.warn(team.promotion);
@@ -222,6 +222,7 @@ function initEvents() {
     // console.info("reset", editId);
     if (editId) {
       // console.warn("cancel- flow de cancel edit");
+      allTeams = [...allTeams];
       renderTeams(allTeams);
       setInputsDisable(false);
       editId = "";
