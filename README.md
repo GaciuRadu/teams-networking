@@ -29,7 +29,7 @@ npm install
 npm start
 and
 CTRL+C
-npm run build
+
 ```
 
 - in other terminal open
@@ -46,6 +46,14 @@ git close https://github.com/GaciuRadu/teams-networking.git
 cd teams-networking
 npm install
 ```
+
+## Periodical action
+
+```sh
+npm run build
+```
+
+Then commit changest to git
 
 Open http://localhost:3000/ to see if it works.
 
