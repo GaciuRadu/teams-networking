@@ -49,7 +49,7 @@ cd teams-networking
 npm install
 ```
 
-## Periodical action
+## Periodical action- to update data from github
 
 ```sh
 npm run build
