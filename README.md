@@ -11,7 +11,7 @@
 🖥️ Open/close the link: npm start/ CTRL+C
 npm run data- git checkout HEAD data.teams,json
 
-- [Formulas](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html)
+- [Command line Git](https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html)
 
 # 📋 Steps to create this project
 
