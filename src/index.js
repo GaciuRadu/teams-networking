@@ -123,7 +123,7 @@ function addTitlesToOverflowCells() {
 function loadTeams() {
   let url = "http://localhost:3000/teams-json";
   if (window.location.host === "gaciuradu.github.io") {
-    url = "data/teams.json";
+    url = "teams.json";
     console.info("we are on the github and we will display mock data %o", url);
   }
   fetch(url)
