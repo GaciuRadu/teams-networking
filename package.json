@@ -11,7 +11,7 @@
     "build": "webpack --mode production",
     "postbuild": "npm run copy-resources && git add docs/*",
     "deploy": "npm run build && git commit -m \"[build] new docs\" && git push",
-    "copy-resources": "Xcopy /E /C /I \"src/data/teams.json\" \"docs/teams.json\"",
+    "copy-resources": "cp \"src/data/teams.json\" \"docs/\"",
     "start": "webpack serve --open",
     "demo": "set PORT=8080 && serve docs"
   },
