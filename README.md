@@ -19,7 +19,7 @@ npm run data- git checkout HEAD data.teams,json
 
 ```sh
 git clone https://github.com/GaciuRadu/teams-networking.git
-cd node-api
+cd team-networking
 npm install
 ```
 
