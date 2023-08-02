@@ -3,6 +3,13 @@ import "./style.css";
 let allTeams = [];
 let editId;
 
+function numbersOfTeams(teams) {
+  var countteams = teams.length;
+  console.warn("numbers of teams", countteams);
+  // console.log(countteams);
+  return countteams;
+}
+
 function $(selector) {
   return document.querySelector(selector);
 }
@@ -45,7 +52,7 @@ function updateTeamRequest(team) {
   }).then(r => r.json());
 }
 
-// console.warn("start app");
+console.warn("start app");
 
 function getTeamAsHTML(team) {
   const url = team.url;
@@ -67,6 +74,7 @@ function getTeamAsHTML(team) {
       <button data-id="${team.id}" type="button" class="action-btn edit-btn" title="edit">✎</button> 
       <button data-id="${team.id}" type="button" class="action-btn delete-btn" title="delete">🗑️</button>
           </td>
+           
   </tr>`;
 }
 
@@ -131,6 +139,7 @@ function loadTeams() {
     .then(teams => {
       allTeams = teams;
       renderTeams(teams);
+      numbersOfTeams(teams);
     });
 }
 
