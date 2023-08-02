@@ -178,16 +178,20 @@ function onSubmit(e) {
     team.id = editId;
     // console.warn("update...", team);
     updateTeamRequest(team).then(status => {
-      // console.warn("updated", status);
+      console.warn("updated", status);
       if (status.success) {
         allTeams = allTeams.map(t => {
-          console.info(t.promotion, t.id === team.id);
+          // console.info(t.promotion, t.id === team.id);
           if (t.id === team.id) {
-            return team;
+            // console.warn("updates %o -> %o", t, team);
+            return {
+              ...t,
+              ...team
+            };
           }
           return t;
         });
-        // allTeams = [...allTeams]
+        console.info(allTeams);
         renderTeams(allTeams);
         setInputsDisable(false);
         editId = "";
