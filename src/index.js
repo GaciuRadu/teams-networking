@@ -108,6 +108,15 @@ function renderTeams(teams, editId) {
     console.warn("same teams already rendered");
     return;
   }
+  if (!editId && teams.length === previewTeams.length) {
+    const sameContent = previewTeams.every((team, i) => team === teams[i]);
+    console.info("sameContent", sameContent);
+    if (sameContent) {
+      console.info("sameContent");
+      return;
+    }
+  }
+
   console.time("render");
   previewTeams = teams;
   // console.warn("render", teams);
@@ -171,9 +180,15 @@ function onSubmit(e) {
     updateTeamRequest(team).then(status => {
       // console.warn("updated", status);
       if (status.success) {
-        // window.location.reload();
-        loadTeams();
-        // $("#teamsForm").reset();
+        allTeams = allTeams.map(t => {
+          console.info(t.promotion, t.id === team.id);
+          if (t.id === team.id) {
+            return team;
+          }
+          return t;
+        });
+        // allTeams = [...allTeams]
+        renderTeams(allTeams);
         setInputsDisable(false);
         editId = "";
       }
