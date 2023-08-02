@@ -1,4 +1,6 @@
+import { loadTeamsRequest, createTeamRequest, deleteTeamRequest, updateTeamRequest } from "./middleware";
 import "./style.css";
+import { $, mask, sleep, unmask } from "./utilities";
 
 let allTeams = [];
 let editId;
@@ -8,48 +10,6 @@ function numbersOfTeams(teams) {
   console.warn("numbers of teams", countteams);
   // console.log(countteams);
   return countteams;
-}
-
-function $(selector) {
-  return document.querySelector(selector);
-}
-
-function createTeamRequest(team) {
-  return fetch("http://localhost:3000/teams-json/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(team)
-  }).then(r => r.json());
-}
-
-function deleteTeamRequest(id, callback) {
-  return fetch("http://localhost:3000/teams-json/delete", {
-    method: "DELETE",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({ id })
-  })
-    .then(r => r.json())
-    .then(status => {
-      // console.info("delete status", status, typeof callback);
-      if (typeof callback === "function") {
-        callback(status);
-      }
-      return status;
-    });
-}
-
-function updateTeamRequest(team) {
-  return fetch("http://localhost:3000/teams-json/update", {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify(team)
-  }).then(r => r.json());
 }
 
 console.warn("start app");
@@ -140,18 +100,11 @@ function addTitlesToOverflowCells() {
 }
 
 function loadTeams() {
-  let url = "http://localhost:3000/teams-json";
-  if (window.location.host === "gaciuradu.github.io") {
-    url = "teams.json";
-    console.info("we are on the github and we will display mock data %o", url);
-  }
-  fetch(url)
-    .then(r => r.json())
-    .then(teams => {
-      allTeams = teams;
-      renderTeams(teams);
-      numbersOfTeams(teams);
-    });
+  return loadTeamsRequest().then(teams => {
+    allTeams = teams;
+    renderTeams(teams);
+    numbersOfTeams(teams);
+  });
 }
 
 function getTeamValues(parent) {
@@ -285,20 +238,14 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
   // window.location.reload();
 });
 
-loadTeams();
+mask($("#teamsForm"));
+loadTeams().then(() => {
+  unmask($("#teamsForm"));
+});
 initEvents();
 
-function sleep(ms) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      resolve();
-    }, ms);
-  });
-}
-$("#teamsForm").classList.add("loading-mask");
 sleep(5000).then(() => {
   console.warn("ready");
-  $("#teamsForm").classList.remove("loading-mask");
 });
 // const s = sleep(4000);
 // console.info("s", s);
