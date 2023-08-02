@@ -55,7 +55,9 @@ function updateTeamRequest(team) {
 console.warn("start app");
 
 function getTeamAsHTML(team) {
-  const url = team.url;
+  // const id = team.id;
+  // const url = team.url;
+  const { id, url } = team;
   const displayUrl = url.startsWith("https://github.com/") ? url.substring(19) : url;
 
   // const displayUrl = url ? (url.includes("//github.com/") ? url.replace("https://github.com/", "") : "google.com") : "";
@@ -71,8 +73,8 @@ function getTeamAsHTML(team) {
       <a href="${url}" target="_blank"> ${displayUrl}  </a>        
     </td>    
     <td> 
-      <button data-id="${team.id}" type="button" class="action-btn edit-btn" title="edit">✎</button> 
-      <button data-id="${team.id}" type="button" class="action-btn delete-btn" title="delete">🗑️</button>
+      <button data-id="${id}" type="button" class="action-btn edit-btn" title="edit">✎</button> 
+      <button data-id="${id}" type="button" class="action-btn delete-btn" title="delete">🗑️</button>
           </td>
            
   </tr>`;
