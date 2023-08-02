@@ -99,12 +99,13 @@ function addTitlesToOverflowCells() {
   });
 }
 
-function loadTeams() {
-  return loadTeamsRequest().then(teams => {
-    allTeams = teams;
-    renderTeams(teams);
-    numbersOfTeams(teams);
-  });
+async function loadTeams() {
+  mask($("#teamsForm"));
+  const teams = await loadTeamsRequest();
+  console.warn("teams", teams);
+  allTeams = teams;
+  renderTeams(teams);
+  unmask($("#teamsForm"));
 }
 
 function getTeamValues(parent) {
@@ -238,14 +239,14 @@ $("#teamsTable tbody").addEventListener(`click`, e => {
   // window.location.reload();
 });
 
-mask($("#teamsForm"));
-loadTeams().then(() => {
-  unmask($("#teamsForm"));
-});
 initEvents();
+loadTeams();
 
-sleep(5000).then(() => {
-  console.warn("ready");
-});
-// const s = sleep(4000);
-// console.info("s", s);
+// var p = sleep(5000);
+// p.then(() => {
+//   console.warn("ready");
+// });
+// console.info("after sleep", p);
+
+// const p2 = await sleep(3000);
+// console.info("after sleep 2", p2);
