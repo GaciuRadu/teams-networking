@@ -225,19 +225,17 @@ function initEvents() {
     }
   });
 }
-// console.info("delete?", document.querySelectorAll(".delete-btn"));
-$("#teamsTable tbody").addEventListener(`click`, e => {
-  // console.warn("click", e.target.matches(`a.delete-btn`));
+
+$("#teamsTable tbody").addEventListener(`click`, async e => {
   if (e.target.matches(`button.delete-btn`)) {
     const id = e.target.dataset.id;
-    // console.warn("delete...%", id);
-    deleteTeamRequest(id, status => {
-      console.warn("delete callback %o", status);
-      if (status.success) {
-        // window.location.reload();
-        loadTeams();
-      }
-    });
+    mask(form);
+    const status = await deleteTeamRequest(id);
+    if (status.success) {
+      allTeams = allTeams.filter(team => team.id !== id);
+    }
+    renderTeams(allTeams);
+    unmask(form);
   } else if (e.target.matches("button.edit-btn")) {
     const id = e.target.dataset.id;
     startEdit(id);
