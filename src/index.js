@@ -85,6 +85,7 @@ function renderTeams(teams, editId) {
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
   });
+
   // console.warn(htmlTeams);
   $("#teamsTable tbody").innerHTML = htmlTeams.join("");
   addTitlesToOverflowCells();
@@ -100,12 +101,12 @@ function addTitlesToOverflowCells() {
 }
 
 async function loadTeams() {
-  mask($("#teamsForm"));
+  mask("#teamsForm");
   const teams = await loadTeamsRequest();
   console.warn("teams", teams);
   allTeams = teams;
   renderTeams(teams);
-  unmask($("#teamsForm"));
+  unmask("#teamsForm");
 }
 
 function getTeamValues(parent) {
