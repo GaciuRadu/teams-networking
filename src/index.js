@@ -2,6 +2,8 @@ import { loadTeamsRequest, createTeamRequest, deleteTeamRequest, updateTeamReque
 import "./style.css";
 import { $, mask, sleep, unmask } from "./utilities";
 
+const form = "#teamsForm";
+
 let allTeams = [];
 let editId;
 
@@ -101,12 +103,12 @@ function addTitlesToOverflowCells() {
 }
 
 async function loadTeams() {
-  mask("#teamsForm");
+  mask(form);
   const teams = await loadTeamsRequest();
   console.warn("teams", teams);
   allTeams = teams;
   renderTeams(teams);
-  unmask("#teamsForm");
+  unmask(form);
 }
 
 function getTeamValues(parent) {
@@ -123,7 +125,7 @@ function getTeamValues(parent) {
   return team;
 }
 
-function onSubmit(e) {
+async function onSubmit(e) {
   // console.warn("submit", e);
   e.preventDefault();
   // console.warn(`update or crate?`, editId);
@@ -131,38 +133,46 @@ function onSubmit(e) {
 
   // console .warn(team);
 
+  mask(form);
+
   if (editId) {
     team.id = editId;
     // console.warn("update...", team);
-    updateTeamRequest(team).then(({ success }) => {
-      if (success) {
-        allTeams = allTeams.map(t => {
-          // console.info(t.promotion, t.id === team.id);
-          if (t.id === team.id) {
-            // console.warn("updates %o -> %o", t, team);
-            return {
-              ...t,
-              ...team
-            };
-          }
-          return t;
-        });
-        // console.info(allTeams);
-        renderTeams(allTeams);
-        setInputsDisable(false);
-        editId = "";
-      }
-    });
+
+    const { success } = await updateTeamRequest(team);
+    if (success) {
+      allTeams = allTeams.map(t => {
+        // console.info(t.promotion, t.id === team.id);
+        if (t.id === team.id) {
+          // console.warn("updates %o -> %o", t, team);
+          return {
+            ...t,
+            ...team
+          };
+        }
+        return t;
+      });
+      // console.info(allTeams);
+      renderTeams(allTeams);
+      setInputsDisable(false);
+      editId = "";
+    }
+    unmask(form);
+
+    // updateTeamRequest(team).then(({ success }) => {
+    // code
+    // });
   } else {
-    createTeamRequest(team).then((success, id) => {
+    createTeamRequest(team).then(({ success, id }) => {
       if (success) {
         team.id = id;
         // allTeams.push(team);
         allTeams = [...allTeams, team];
         renderTeams(allTeams);
         console.info(allTeams);
-        $("#teamsForm").reset();
+        $(form).reset();
       }
+      unmask(form);
     });
   }
 }
@@ -205,8 +215,8 @@ function initEvents() {
     renderTeams(teams);
   });
 
-  $("#teamsForm").addEventListener("submit", onSubmit);
-  $("#teamsForm").addEventListener("reset", e => {
+  $(form).addEventListener("submit", onSubmit);
+  $(form).addEventListener("reset", e => {
     // console.info("reset", editId);
     if (editId) {
       // console.warn("cancel- flow de cancel edit");
