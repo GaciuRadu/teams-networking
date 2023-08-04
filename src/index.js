@@ -28,7 +28,7 @@ function getTeamAsHTML(team) {
   // console.info(team);
   return `<tr>
     <td>
-    <input type="checkbox" name="selectAll" id="selectAll" />
+      <input type="checkbox" name="selected" value="${id}" />
     </td>
     <td>${team.promotion}</td>
     <td>${team.members}</td>
@@ -39,33 +39,31 @@ function getTeamAsHTML(team) {
     <td> 
       <button data-id="${id}" type="button" class="action-btn edit-btn" title="edit">✎</button> 
       <button data-id="${id}" type="button" class="action-btn delete-btn" title="delete">🗑️</button>
-          </td>
-           
+    </td>
   </tr>`;
 }
 
-function getTeamAsHTMLInputs({ promotion, members, name, url }) {
+function getTeamAsHTMLInputs({ id, promotion, members, name, url }) {
   console.info("inputs", arguments);
-  // console.info(team);
   return `<tr>
-    <td >
-    <input type="checkbox" name="selectAll" id="selectAll" />
+    <td>
+      <input type="checkbox" name="selected" value="${id}" />
     </td>
     <td>
-      <input value=${promotion} type="text" required name="promotion" placeholder="Enter promotion" />
+      <input value="${promotion}" type="text" required name="promotion" placeholder="Enter promotion" />
     </td>
     <td>
-      <input value=${members} type="text" required name="members" placeholder="Enter members" />
+      <input value="${members}" type="text" required name="members" placeholder="Enter members" />
     </td>
     <td>
-      <input value=${name} type="text" required name="name" placeholder="Enter project name" />
+      <input value="${name}" type="text" required name="name" placeholder="Enter project name" />
     </td>
     <td>
-      <input value=${url} type="text" required name="url" placeholder="Project URL" />
+      <input value="${url}" type="text" required name="url" placeholder="Project URL" />
     </td>
     <td>
-      <button  type="submit" class="action-btn" title="Save">💾</button>
-      <button  type="reset"  class="action-btn" title="Cancel">✖</button>
+      <button type="submit" class="action-btn" title="Save">💾</button>
+      <button type="reset"  class="action-btn" title="Cancel">✖</button>
     </td>
   </tr>`;
 }
@@ -189,11 +187,24 @@ function filterElements(teams, search) {
   });
 }
 
+function removeSelected() {
+  console.info("removeSelected");
+}
+
 function initEvents() {
+  $("#removeSelected").addEventListener("click", removeSelected);
+
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
     const teams = filterElements(allTeams, search);
     renderTeams(teams);
+  });
+
+  $("#selectAll").addEventListener("input", e => {
+    console.info("check all boxes");
+    document.querySelectorAll("input[name=selected]").forEach(input => {
+      input.checked = e.target.checked;
+    });
   });
 
   $(form).addEventListener("submit", onSubmit);
