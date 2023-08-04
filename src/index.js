@@ -188,7 +188,11 @@ function filterElements(teams, search) {
 }
 
 function removeSelected() {
-  console.info("removeSelected");
+  const selected = document.querySelectorAll("input[name=selected]:checked");
+  console.info("selected", selected, selected[0].value);
+  const ids = [...selected].map(input => input.value);
+
+  console.warn("ids", ids);
 }
 
 function initEvents() {
