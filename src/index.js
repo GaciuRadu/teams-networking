@@ -1,3 +1,4 @@
+import { debounce } from "lodash"; // not ok- is importing all function
 import { loadTeamsRequest, createTeamRequest, deleteTeamRequest, updateTeamRequest } from "./middleware";
 import "./style.css";
 import { $, mask, sleep, unmask } from "./utilities";
@@ -205,11 +206,14 @@ function initEvents() {
     renderTeams(teams);
   });
 
-  $("#selectAll").addEventListener("input", e => {
-    document.querySelectorAll("input[name=selected]").forEach(input => {
-      input.checked = e.target.checked;
-    });
-  });
+  $("#selectAll").addEventListener(
+    "input",
+    debounce(e => {
+      document.querySelectorAll("input[name=selected]").forEach(input => {
+        input.checked = e.target.checked;
+      });
+    }, 200)
+  );
 
   $(form).addEventListener("submit", onSubmit);
   $(form).addEventListener("reset", e => {
