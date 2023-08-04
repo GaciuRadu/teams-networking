@@ -126,25 +126,19 @@ function getTeamValues(parent) {
 }
 
 async function onSubmit(e) {
-  // console.warn("submit", e);
   e.preventDefault();
-  // console.warn(`update or crate?`, editId);
-  const team = getTeamValues(editId ? "tbody" : "tfoot");
 
-  // console .warn(team);
+  const team = getTeamValues(editId ? "tbody" : "tfoot");
 
   mask(form);
 
   if (editId) {
     team.id = editId;
-    // console.warn("update...", team);
 
     const { success } = await updateTeamRequest(team);
     if (success) {
       allTeams = allTeams.map(t => {
-        // console.info(t.promotion, t.id === team.id);
         if (t.id === team.id) {
-          // console.warn("updates %o -> %o", t, team);
           return {
             ...t,
             ...team
@@ -152,39 +146,29 @@ async function onSubmit(e) {
         }
         return t;
       });
-      // console.info(allTeams);
-      renderTeams(allTeams);
+
       setInputsDisable(false);
       editId = "";
     }
-    unmask(form);
   } else {
     const { success, id } = await createTeamRequest(team);
     if (success) {
       team.id = id;
-      // allTeams.push(team);
       allTeams = [...allTeams, team];
-      renderTeams(allTeams);
-      console.info(allTeams);
       $(form).reset();
     }
-    unmask(form);
   }
+  renderTeams(allTeams);
+  unmask(form);
 }
 function startEdit(id) {
   editId = id;
-  console.warn("edit... %o", id, allTeams);
-  // const team = allTeams.find(team => team.id === id);
-
-  // console.warn(team.promotion);
-  // $("#promotion").value = team.promotion;
-  // $("#members").value = team.members;
   renderTeams(allTeams, id);
   setInputsDisable(true);
 }
 
 function setInputsDisable(disable) {
-  document.querySelectorAll("tfoot input").forEach(input => {
+  document.querySelectorAll("tfoot input, tfoot button").forEach(input => {
     input.disabled = disable;
   });
 }
@@ -192,7 +176,6 @@ function setInputsDisable(disable) {
 function filterElements(teams, search) {
   search = search.toLowerCase();
   return teams.filter(({ promotion, members, name, url }) => {
-    // console.info("search %O in %o", search, team.promotion);
     return (
       promotion.toLowerCase().includes(search) ||
       members.toLowerCase().includes(search) ||
@@ -206,15 +189,12 @@ function initEvents() {
   $("#search").addEventListener("input", e => {
     const search = e.target.value;
     const teams = filterElements(allTeams, search);
-    console.info("search", search, teams);
     renderTeams(teams);
   });
 
   $(form).addEventListener("submit", onSubmit);
   $(form).addEventListener("reset", e => {
-    // console.info("reset", editId);
     if (editId) {
-      // console.warn("cancel- flow de cancel edit");
       allTeams = [...allTeams];
       renderTeams(allTeams);
       setInputsDisable(false);
