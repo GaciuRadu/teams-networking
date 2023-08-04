@@ -85,12 +85,11 @@ function renderTeams(teams, editId) {
 
   console.time("render");
   previewTeams = teams;
-  // console.warn("render", teams);
+
   const htmlTeams = teams.map(team => {
     return team.id === editId ? getTeamAsHTMLInputs(team) : getTeamAsHTML(team);
   });
 
-  // console.warn(htmlTeams);
   $("#teamsTable tbody").innerHTML = htmlTeams.join("");
   addTitlesToOverflowCells();
   console.timeEnd("render");
@@ -107,7 +106,6 @@ function addTitlesToOverflowCells() {
 async function loadTeams() {
   mask(form);
   const teams = await loadTeamsRequest();
-  console.warn("teams", teams);
   allTeams = teams;
   renderTeams(teams);
   unmask(form);
@@ -194,7 +192,6 @@ async function removeSelected() {
   const ids = [...selected].map(input => input.value);
   const promises = ids.map(id => deleteTeamRequest(id));
   const responses = await Promise.allSettled(promises);
-  // console.warn("ids", promises);
   unmask("#main");
   loadTeams();
 }
@@ -209,7 +206,6 @@ function initEvents() {
   });
 
   $("#selectAll").addEventListener("input", e => {
-    console.info("check all boxes");
     document.querySelectorAll("input[name=selected]").forEach(input => {
       input.checked = e.target.checked;
     });
