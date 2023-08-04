@@ -158,22 +158,17 @@ async function onSubmit(e) {
       editId = "";
     }
     unmask(form);
-
-    // updateTeamRequest(team).then(({ success }) => {
-    // code
-    // });
   } else {
-    createTeamRequest(team).then(({ success, id }) => {
-      if (success) {
-        team.id = id;
-        // allTeams.push(team);
-        allTeams = [...allTeams, team];
-        renderTeams(allTeams);
-        console.info(allTeams);
-        $(form).reset();
-      }
-      unmask(form);
-    });
+    const { success, id } = await createTeamRequest(team);
+    if (success) {
+      team.id = id;
+      // allTeams.push(team);
+      allTeams = [...allTeams, team];
+      renderTeams(allTeams);
+      console.info(allTeams);
+      $(form).reset();
+    }
+    unmask(form);
   }
 }
 function startEdit(id) {
