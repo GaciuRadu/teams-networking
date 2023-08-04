@@ -22,7 +22,7 @@
     <section>
       <div class="tbar">
         <div>
-          <!-- <button disabled title="TODO pls implement me">❌ Remove selected// numar echipe</button> -->
+          <button disabled title="TODO pls implement me">❌ Remove selected// numar echipe</button>
         </div>
         <div class="tfill"></div>
         <div>
@@ -34,7 +34,7 @@
       <form id="teamsForm" action="" method="get">
         <table id="teamsTable">
           <colgroup>
-            <col />
+            <col class="select-all-col" />
             <col style="width: 20%" />
             <col style="width: 40%" />
             <col style="width: 25%" />
@@ -44,7 +44,7 @@
           <thead>
             <tr>
               <th>
-                <input type="checkbox" />
+                <input type="checkbox" name="selectAll" id="selectAll" />
               </th>
               <th>Promotion</th>
               <th>Members</th>

@@ -75,6 +75,9 @@ body > section {
 .tfill {
   flex: 1;
 }
+.seletc-all-col {
+  width: 40px;
+}
 
 #teamsTable {
   border-collapse: collapse;

@@ -27,7 +27,9 @@ function getTeamAsHTML(team) {
   // const displayOtherUrl = url.startsWith("https://www.") ? url.substring(12) : url;
   // console.info(team);
   return `<tr>
-    <td></td>
+    <td>
+    <input type="checkbox" name="selectAll" id="selectAll" />
+    </td>
     <td>${team.promotion}</td>
     <td>${team.members}</td>
     <td>${team.name}</td>
@@ -46,7 +48,9 @@ function getTeamAsHTMLInputs({ promotion, members, name, url }) {
   console.info("inputs", arguments);
   // console.info(team);
   return `<tr>
-    <td></td>
+    <td >
+    <input type="checkbox" name="selectAll" id="selectAll" />
+    </td>
     <td>
       <input value=${promotion} type="text" required name="promotion" placeholder="Enter promotion" />
     </td>
