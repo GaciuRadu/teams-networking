@@ -196,7 +196,7 @@ function initEvents() {
   $(form).addEventListener("reset", e => {
     if (editId) {
       allTeams = [...allTeams];
-      renderTeams(allTeams);
+      renderTeams(allTeams, -1); // use -1 to force render
       setInputsDisable(false);
       editId = "";
     }
