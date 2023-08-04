@@ -40,21 +40,22 @@ function getTeamAsHTML(team) {
   </tr>`;
 }
 
-function getTeamAsHTMLInputs(team) {
+function getTeamAsHTMLInputs({ promotion, members, name, url }) {
+  console.info("inputs", arguments);
   // console.info(team);
   return `<tr>
     <td></td>
     <td>
-      <input value=${team.promotion} type="text" required name="promotion" placeholder="Enter promotion" />
+      <input value=${promotion} type="text" required name="promotion" placeholder="Enter promotion" />
     </td>
     <td>
-      <input value=${team.members} type="text" required name="members" placeholder="Enter members" />
+      <input value=${members} type="text" required name="members" placeholder="Enter members" />
     </td>
     <td>
-      <input value=${team.name} type="text" required name="name" placeholder="Enter project name" />
+      <input value=${name} type="text" required name="name" placeholder="Enter project name" />
     </td>
     <td>
-      <input value=${team.url} type="text" required name="url" placeholder="Project URL" />
+      <input value=${url} type="text" required name="url" placeholder="Project URL" />
     </td>
     <td>
       <button  type="submit" class="action-btn" title="Save">💾</button>
@@ -64,7 +65,6 @@ function getTeamAsHTMLInputs(team) {
 }
 
 let previewTeams = [];
-
 function renderTeams(teams, editId) {
   if (!editId && teams === previewTeams) {
     console.warn("same teams already rendered");
@@ -133,9 +133,8 @@ function onSubmit(e) {
   if (editId) {
     team.id = editId;
     // console.warn("update...", team);
-    updateTeamRequest(team).then(status => {
-      console.warn("updated", status);
-      if (status.success) {
+    updateTeamRequest(team).then(({ success }) => {
+      if (success) {
         allTeams = allTeams.map(t => {
           // console.info(t.promotion, t.id === team.id);
           if (t.id === team.id) {
@@ -147,17 +146,16 @@ function onSubmit(e) {
           }
           return t;
         });
-        console.info(allTeams);
+        // console.info(allTeams);
         renderTeams(allTeams);
         setInputsDisable(false);
         editId = "";
       }
     });
   } else {
-    createTeamRequest(team).then(status => {
-      console.warn("created", status);
-      if (status.success) {
-        team.id = status.id;
+    createTeamRequest(team).then((success, id) => {
+      if (success) {
+        team.id = id;
         // allTeams.push(team);
         allTeams = [...allTeams, team];
         renderTeams(allTeams);
@@ -187,13 +185,13 @@ function setInputsDisable(disable) {
 
 function filterElements(teams, search) {
   search = search.toLowerCase();
-  return teams.filter(team => {
+  return teams.filter(({ promotion, members, name, url }) => {
     // console.info("search %O in %o", search, team.promotion);
     return (
-      team.promotion.toLowerCase().includes(search) ||
-      team.members.toLowerCase().includes(search) ||
-      team.name.toLowerCase().includes(search) ||
-      team.url.toLowerCase().includes(search)
+      promotion.toLowerCase().includes(search) ||
+      members.toLowerCase().includes(search) ||
+      name.toLowerCase().includes(search) ||
+      url.toLowerCase().includes(search)
     );
   });
 }
