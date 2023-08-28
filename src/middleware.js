@@ -8,6 +8,7 @@ export function loadTeamsRequest() {
 }
 
 export function createTeamRequest(team) {
+  console.info("suntem aici");
   return fetch("http://localhost:3000/teams-json/create", {
     method: "POST",
     headers: {
